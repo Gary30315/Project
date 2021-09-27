@@ -58,7 +58,7 @@ Res_model.add(Flatten())
 Res_model.add(Dropout(0.5))
 Res_model.add(Dense(5, activation='softmax', name='prediction'))
 
-Res_model.compile(optimizer=Adam(lr=1e-5),
+Res_model.compile(optimizer=Adam(learning_rate=1e-5),
                   loss='categorical_crossentropy', metrics=['accuracy'])
 
 # print(net_final.summary())
@@ -73,7 +73,7 @@ history_res = Res_model.fit_generator(train_batches,
                             steps_per_epoch = train_batches.samples // BATCH_SIZE,
                             validation_data = valid_batches,
                             validation_steps = valid_batches.samples // BATCH_SIZE,
-                            callbacks=[checkpoint_callback],
+                            callbacks=[best_model_path],
                             epochs = NUM_EPOCHS)
 
 history_dict = history_res.history

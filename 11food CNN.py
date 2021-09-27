@@ -148,8 +148,8 @@ def get_pseudo_labels(dataset, model,threshold = 0.9):
         batch[0] = torch.squeeze(batch[0])
         if probs_max >= threshold:
             data_new.append(batch)
-            print(probs_max)
-            print(pseudo_labels)
+            # print(probs_max)
+            # print(pseudo_labels)
     # Turn off the eval mode.
     model.train()
     return data_new
